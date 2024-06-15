@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'json',
+    loadChildren: () => import('./pages/json/json.module').then( m => m.JsonPageModule)
+  },
 ];
 
 @NgModule({

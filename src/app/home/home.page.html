@@ -1,20 +1,38 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title size="large">Pokemon API Test</ion-title>
+      <ion-button slot="end" [routerLink]="['/json']">Test db.json</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Pokemon API Test</ion-title>
+      <ion-button [routerLink]="['/json']">Test db.json</ion-button>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-list *ngFor="let pokemon of pokemonList">
+      <ion-item>
+        <ion-label>{{capitalize(pokemon.name)}}</ion-label>
+        <ion-button slot="end" size="default" (click)="openPokemon(pokemon.url)"> Open </ion-button>
+      </ion-item>
+    </ion-list>
+    <ion-modal  [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-card>
+          <img src={{imagen}}/>
+          <ion-card-header>
+            <ion-card-title>{{capitalize(selectedPokemon.name)}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+  
+          </ion-card-content>
+          <ion-button (click)="setModalOpen(false); imagen='';">Cerrar</ion-button>
+        </ion-card>
+      </ng-template>
+    </ion-modal>
   </div>
 </ion-content>
