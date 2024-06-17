@@ -13,7 +13,8 @@ export class APIService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type' : 'application/json',
-      'Access-Control-Allow-Origin' :'*'
+      'Access-Control-Allow-Origin' :'*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
     })
   }
   apiURL = 'http://localhost:3000';
